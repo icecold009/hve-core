@@ -36,7 +36,6 @@ function manifest(overrides: JsonObject = {}): JsonObject {
     commands: ['.github/commands/one.prompt.md'],
     rules: [],
     skills: ['.github/skills/one'],
-    hooks: '.github/hooks/shared/telemetry.json',
     ...overrides,
   };
 }
@@ -70,7 +69,12 @@ describe('loadPackageCards plugin manifest resolution', () => {
       name: 'hve-core',
       title: 'HVE Core',
       description: 'HVE Core description',
-      artifacts: 5,
+      artifacts: 4,
+      contents: [
+        { kind: 'agents', label: 'Agents', count: 2, href: '/docs/reference/agents' },
+        { kind: 'prompts', label: 'Prompts', count: 1, href: '/docs/reference/prompts' },
+        { kind: 'skills', label: 'Skills', count: 1, href: '/docs/reference/skills' },
+      ],
       maturity: 'Stable',
       href: '/docs/plugins/hve-core',
     }]);
